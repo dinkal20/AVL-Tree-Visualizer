@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>AVL Tree Visualizer</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ==================================================
+         HEADER
+         ================================================== -->
+
+    <header>
+        
+        <h1>
+            AVL Tree Visualizer
+        </h1>
+
+        <p>
+            Visualize, understand and explore AVL tree operations
+        </p>
+
+    </header>
+
+
+
+    <main>
+
+
+        <!-- ==================================================
+             CONTROLS
+             ================================================== -->
+
+        <section class="controls">
+
+            <input
+                type="number"
+                id="valueInput"
+                placeholder="Enter a value"
+            >
+
+            <button id="insertBtn">
+                Insert
+            </button>
+
+            <button id="deleteBtn">
+                Delete
+            </button>
+
+            <button id="randomBtn">
+                🎲 Random Tree
+            </button>
+
+            <button id="clearBtn">
+                Clear
+            </button>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             SAVE / LOAD
+             ================================================== -->
+
+        <section class="file-controls">
+
+            <button id="saveBtn">
+                💾 Save Tree
+            </button>
+
+            <button id="loadBtn">
+                📂 Load Tree
+            </button>
+
+            <input
+                type="file"
+                id="fileInput"
+                accept=".json"
+                hidden
+            >
+
+        </section>
+
+
+
+        <!-- ==================================================
+             OPERATION EXPLANATION
+             ================================================== -->
+
+        <section class="explanation">
+
+            <h2>
+                🧠 What Happened?
+            </h2>
+
+            <div id="explanationContent">
+
+                <p>
+                    Insert or delete a node to see how the
+                    AVL tree balances itself.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             AVL TREE
+             ================================================== -->
+
+        <section class="tree-section">
+
+            <h2>
+                🌳 AVL Tree
+            </h2>
+
+            <div id="treeContainer">
+
+                <p class="empty-message">
+                    Your AVL tree will appear here
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             STATISTICS
+             ================================================== -->
+
+        <section class="info-section">
+
+
+            <div class="info-card">
+
+                <h3>
+                    Nodes
+                </h3>
+
+                <p id="nodeCount">
+                    0
+                </p>
+
+            </div>
+
+
+
+            <div class="info-card">
+
+                <h3>
+                    Height
+                </h3>
+
+                <p id="treeHeight">
+                    0
+                </p>
+
+            </div>
+
+
+
+            <div class="info-card">
+
+                <h3>
+                    Minimum
+                </h3>
+
+                <p id="minValue">
+                    -
+                </p>
+
+            </div>
+
+
+
+            <div class="info-card">
+
+                <h3>
+                    Maximum
+                </h3>
+
+                <p id="maxValue">
+                    -
+                </p>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ==================================================
+             TRAVERSAL VISUALIZATION
+             ================================================== -->
+
+        <section class="traversal-controls">
+
+            <h2>
+                🎬 Traversal Visualization
+            </h2>
+
+
+            <div class="traversal-buttons">
+
+
+                <button id="visualizeInorder">
+                    Inorder
+                </button>
+
+
+                <button id="visualizePreorder">
+                    Preorder
+                </button>
+
+
+                <button id="visualizePostorder">
+                    Postorder
+                </button>
+
+
+                <button id="visualizeLevelorder">
+                    Level Order
+                </button>
+
+
+            </div>
+
+
+            <p id="traversalStatus">
+
+                Select a traversal to visualize it.
+
+            </p>
+
+
+        </section>
+
+
+
+        <!-- ==================================================
+             TRAVERSALS
+             ================================================== -->
+
+        <section class="traversals">
+
+            <h2>
+                🌿 Tree Traversals
+            </h2>
+
+
+            <p>
+
+                <strong>
+                    Inorder:
+                </strong>
+
+                <span id="inorder">
+                    -
+                </span>
+
+            </p>
+
+
+            <p>
+
+                <strong>
+                    Preorder:
+                </strong>
+
+                <span id="preorder">
+                    -
+                </span>
+
+            </p>
+
+
+            <p>
+
+                <strong>
+                    Postorder:
+                </strong>
+
+                <span id="postorder">
+                    -
+                </span>
+
+            </p>
+
+
+            <p>
+
+                <strong>
+                    Level Order:
+                </strong>
+
+                <span id="levelorder">
+                    -
+                </span>
+
+            </p>
+
+
+        </section>
+
+
+
+        <!-- ==================================================
+             COMPLEXITY
+             ================================================== -->
+
+        <section class="complexity">
+
+            <h2>
+                ⏱️ AVL Tree Complexity
+            </h2>
+
+
+            <div class="complexity-grid">
+
+
+                <div>
+
+                    <strong>
+                        Search
+                    </strong>
+
+                    <span>
+                        O(log n)
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Insertion
+                    </strong>
+
+                    <span>
+                        O(log n)
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Deletion
+                    </strong>
+
+                    <span>
+                        O(log n)
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Rotation
+                    </strong>
+
+                    <span>
+                        O(1)
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Space
+                    </strong>
+
+                    <span>
+                        O(n)
+                    </span>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             OPERATION HISTORY
+             ================================================== -->
+
+        <section class="history">
+
+            <h2>
+                📜 Operation History
+            </h2>
+
+
+            <ul id="historyList">
+
+                <li>
+                    No operations yet
+                </li>
+
+            </ul>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ==================================================
+         TOAST NOTIFICATIONS
+         ================================================== -->
+
+    <div id="toastContainer"></div>
+
+
+
+    <!-- ==================================================
+         JAVASCRIPT
+         ================================================== -->
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>
